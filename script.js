@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
      function achar_proximo (elemento, lista, index) {
       const tamanho = lista.length - 1;
 
-  
       let index_futuro = index + 1;
 
       if (tamanho == index) {
@@ -30,10 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         index_passado = tamanho;
       }
 
-
       lista[index_passado].classList.add('past');
       lista[index_futuro].classList.add('future');
-
      
      }
 
@@ -62,10 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
               }
               alterar_imagem(carousel, list_carousel, index)
               index += 1;
-
-           
-          
-            
           }
       }
       

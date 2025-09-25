@@ -33,7 +33,6 @@ header {
   box-shadow: 0 4px 8px rgba(0,0,0,0.06);
 }
 
-
 .container {
   width: 90%;
   margin: auto;
@@ -84,7 +83,7 @@ header {
   background: #396481;
 }
 
-/* SEÇÃO - configuração base para separar telas */
+/* SEÇÕES */
 .secao {
   padding: 120px 20px;
   min-height: 100vh;
@@ -92,38 +91,20 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  scroll-margin-top: 90px; /* evita header fixo cobrindo título */
+  scroll-margin-top: 90px;
 }
 
-/* alterna cor de fundo (assim ficam separadas) */
 .secao:nth-of-type(odd) {
   background: #f9fbff;
 }
+
 .secao:nth-of-type(even) {
   background: #ffffff;
 }
 
-/* HERO (primeira seção) */
-.hero {
-  background: url("img/condimg.webp") no-repeat center center/cover;
-  position: relative;
-  min-height: 100vh;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 71, 97, 0.75); 
-}
-.hero .overlay {
-  position: relative;
-  max-width: 1000px;
-  color: #fff;
-  text-align: center;
-  padding: 40px;
-}
-/* SEÇÃO INÍCIO */
+/* HERO / INÍCIO */
 #inicio {
+  position: relative;
   background: url("img/condimg.webp") no-repeat center center/cover;
   min-height: 100vh;
   display: flex;
@@ -133,7 +114,24 @@ header {
   text-align: center;
   color: #fff;
   padding: 0 20px;
+  overflow: hidden; /* garante que o ::before fique contido */
 }
+
+/* Sombra sobre a imagem */
+#inicio::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* cobre toda a área */
+  background: rgba(0, 71, 97, 0.75); /* cor da sombra */
+  z-index: 0;
+}
+
+/* Texto acima da sombra */
+#inicio .overlay, #inicio h2, #inicio p, #inicio .botoes {
+  position: relative;
+  z-index: 1;
+}
+
 
 #inicio h2 {
   font-size: 4rem;
@@ -141,6 +139,7 @@ header {
   font-weight: 800;
   letter-spacing: -1px;
 }
+
 #inicio p {
   margin: 14px 0;
   font-size: 1.05rem;
@@ -157,7 +156,6 @@ header {
   justify-content: center;
 }
 
-/* botões */
 .btn-primary, .btn-secondary {
   padding: 12px 22px;
   border-radius: 10px;
@@ -165,11 +163,15 @@ header {
   text-decoration: none;
   transition: 0.3s;
 }
+
 .btn-primary {
   background: #0071b8;
   color: #fff;
 }
-.btn-primary:hover { background: #396481; }
+.btn-primary:hover {
+  background: #396481;
+}
+
 .btn-secondary {
   background: transparent;
   border: 2px solid rgba(255,255,255,0.25);
@@ -178,6 +180,9 @@ header {
 .btn-secondary:hover {
   background: rgba(255,255,255,0.12);
 }
+
+
+/* TÍTULOS */
 .secao h3 {
   font-size: 2.8rem;
   margin-bottom: 18px;
@@ -195,7 +200,6 @@ header {
   border-radius: 6px;
 }
 
-/* TITULOS SEÇÕES */
 .secao h2 {
   font-size: 2.8rem;
   margin-bottom: 18px;
@@ -217,26 +221,25 @@ header {
 .cards-grid {
   width: 85%;
   margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
 }
 
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
-/* CARD PRINCIPAL */
 .card {
+  flex: 1 1 260px;
+  max-width: 280px;
   background: #dff4ff;
   border: 2px solid #5ab0f073;
   border-radius: 12px;
-  padding: 36px 28px;
+  padding: 32px 24px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-align: center;
-  min-height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .card:hover {
@@ -246,19 +249,19 @@ header {
 
 .card h3 {
   color: #123b4a;
-  margin: 12px 0;
-  font-size: 1.1rem;
+  margin: 14px 0 10px;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
 .card p {
   color: #396481;
   font-size: 0.95rem;
-  max-width: 520px;
-  margin: 0 auto;
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* CÍRCULO DO ÍCONE grande (acima do título) */
+/* ÍCONES */
 .icon-circle {
   width: 78px;
   height: 78px;
@@ -267,21 +270,19 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 8px;
+  margin: 0 auto 12px;
   border: 1px solid rgba(90,176,240,0.22);
   box-shadow: inset 0 6px 12px rgba(255,255,255,0.06);
 }
 
-/* estiliza o SVG que a feather injeta */
 .icon-circle svg {
   width: 36px;
   height: 36px;
   stroke: #5ab0f0;
   stroke-width: 1.8;
-  color: #5ab0f0; /* some browsers use currentColor */
 }
 
-/* GRID e cartões menores na seção SOBRE */
+/* SOBRE NÓS */
 .sobre-container {
   max-width: 980px;
   margin: auto;
@@ -298,7 +299,6 @@ header {
   line-height: 1.7;
 }
 
-/* small cards (botões estilo do print) */
 .small-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -340,39 +340,24 @@ header {
   font-weight: 700;
 }
 
+/* FOOTER */
 footer {
-  background: #1b4965; /* azul escuro */
+  font-weight: 600;
+  background: #1b4965; 
   color: #fff;
   text-align: center;
   padding: 30px 20px;
-  margin-top: auto;
 }
 
 footer .footer-container p {
+  font-weight: 600;
   margin: 10px 0;
   font-size: 14px;
-}
-
-footer .social {
-  margin: 10px 0;
 }
 
 footer .social a {
   color: #fff;
   font-size: 16px;
   text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer .social a:hover {
-  color: #5ab0f0; /* azul claro do seu design */
-}
-
-
-/* RESPONSIVO */
-@media (max-width: 900px) {
-  .grid-2 { grid-template-columns: 1fr; }
-  #inicio h2 { font-size: 2.6rem; }
-  .cards-grid { width: 92%; }
-  .sobre-container { padding: 24px; }
+ 
 }
